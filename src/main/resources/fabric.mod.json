@@ -3,12 +3,13 @@
   "id": "embeddedcomputer",
   "version": "${version}",
   "name": "Embedded Computer",
-  "description": "Embedded computer for CC",
+  "description": "Embedded computer (+more) for CC",
   "authors": [
-    "Featherwhisker"
+    "Featherwhisker",
+    "Herr Katze"
   ],
   "contact": {},
-  "license": "MIT",
+  "license": "MPL 2.0",
   "icon": "assets/embeddedcomputer/icon.png",
   "environment": "*",
   "entrypoints": {

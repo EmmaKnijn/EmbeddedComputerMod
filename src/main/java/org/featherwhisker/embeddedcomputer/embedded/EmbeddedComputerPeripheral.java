@@ -1,3 +1,8 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
 package org.featherwhisker.embeddedcomputer.embedded;
 
 import dan200.computercraft.api.ComputerCraftAPI;
@@ -8,6 +13,7 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.shared.computer.blocks.AbstractComputerBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.Direction;
+import org.featherwhisker.embeddedcomputer.storage.harddrive.HardDrivePeripheral;
 import org.jetbrains.annotations.Nullable;
 import org.featherwhisker.embeddedcomputer.embedded.block.EmbeddedComputerBlockEntity;
 
@@ -29,7 +35,10 @@ public class EmbeddedComputerPeripheral implements IPeripheral {
 
     @Override
     public boolean equals(@Nullable IPeripheral other) {
-        return false;
+        boolean same = false;
+        if (this == other) same = true;
+        if (other instanceof EmbeddedComputerPeripheral comp1 && comp1.comp == comp) same = true;
+        return same;
     }
 
     public ServerEmbeddedComputer getServerComp() {

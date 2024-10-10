@@ -31,6 +31,7 @@ import org.featherwhisker.embeddedcomputer.storage.harddrive.HardDriveBlockEntit
 import org.featherwhisker.embeddedcomputer.platform.registry1;
 import org.featherwhisker.embeddedcomputer.storage.harddrive.HardDriveItem;
 import org.featherwhisker.embeddedcomputer.storage.harddrive.HardDrivePeripheral;
+import org.featherwhisker.embeddedcomputer.storage.items.DebugMediaItem;
 import org.featherwhisker.embeddedcomputer.storage.items.FlashCardItem;
 import org.featherwhisker.embeddedcomputer.storage.items.ZipDiskItem;
 
@@ -63,6 +64,7 @@ public class registry {
             new HardDriveItem(HARD_DRIVE, new FabricItemSettings().maxCount(1))
     );
 
+    public static final Item DEBUG_MEDIA_ITEM = Registry.register(Registries.ITEM, Identifier.of("embeddedcomputer", "debug_rock"), new DebugMediaItem(new Item.Settings()));
     public static final Item ZIP_DISK_ITEM = Registry.register(Registries.ITEM, Identifier.of("embeddedcomputer", "zip_disk"), new ZipDiskItem(new Item.Settings()));
     public static final Item FLASH_CARD_ITEM = Registry.register(Registries.ITEM, Identifier.of("embeddedcomputer", "flash_card"), new FlashCardItem(new Item.Settings()));
 

@@ -27,6 +27,7 @@ public class registry1 {
         ItemGroupEvents.modifyEntriesEvent(itemGroupKey).register(itemGroup -> {
             itemGroup.add(registry.EMBEDDED_COMPUTER_ITEM);
             itemGroup.add(registry.HARD_DRIVE_ITEM);
+            itemGroup.add(registry.DEBUG_MEDIA_ITEM);
             itemGroup.add(registry.ZIP_DISK_ITEM);
             itemGroup.add(registry.FLASH_CARD_ITEM);
         });

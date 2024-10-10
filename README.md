@@ -1,5 +1,5 @@
-# EmbeddedComputerMod
-This mod adds the embedded computer block and related things
+# Embedded Compute rMod
+This mod adds the "embedded computer" and related things
 
 # License
 

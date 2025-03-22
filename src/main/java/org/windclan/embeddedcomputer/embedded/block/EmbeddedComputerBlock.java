@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package org.featherwhisker.embeddedcomputer.embedded.block;
+package org.windclan.embeddedcomputer.embedded.block;
 
 import dan200.computercraft.shared.computer.core.ComputerState;
 import dan200.computercraft.shared.util.BlockEntityHelpers;
@@ -25,8 +25,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.state.property.EnumProperty;
-import org.featherwhisker.embeddedcomputer.embedded.item.ComputerBlockItem;
-import org.featherwhisker.embeddedcomputer.registry;
+import org.windclan.embeddedcomputer.embedded.item.ComputerBlockItem;
+import org.windclan.embeddedcomputer.registry;
 
 import static java.util.Objects.isNull;
 

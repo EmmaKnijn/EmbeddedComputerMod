@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package org.featherwhisker.embeddedcomputer.platform;
+package org.windclan.embeddedcomputer.platform;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -14,7 +14,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import org.featherwhisker.embeddedcomputer.registry;
+import org.windclan.embeddedcomputer.registry;
 
 public class registry1 {
     public static final ItemGroup EMBEDDED_COMPUTER_GROUP = FabricItemGroup.builder()

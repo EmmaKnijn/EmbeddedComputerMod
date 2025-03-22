@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package org.featherwhisker.embeddedcomputer.storage.harddrive;
+package org.windclan.embeddedcomputer.storage.harddrive;
 
 import dan200.computercraft.api.ComputerCraftAPI;
 import dan200.computercraft.api.filesystem.WritableMount;
@@ -14,7 +14,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.featherwhisker.embeddedcomputer.registry;
+import org.windclan.embeddedcomputer.registry;
 import org.jetbrains.annotations.Nullable;
 
 import static java.util.Objects.isNull;

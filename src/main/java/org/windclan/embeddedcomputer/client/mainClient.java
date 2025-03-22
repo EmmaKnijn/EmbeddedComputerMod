@@ -1,4 +1,4 @@
-package org.featherwhisker.embeddedcomputer.client;
+package org.windclan.embeddedcomputer.client;
 
 import net.fabricmc.api.ClientModInitializer;
 

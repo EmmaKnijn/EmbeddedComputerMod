@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package org.featherwhisker.embeddedcomputer;
+package org.windclan.embeddedcomputer;
 
 import dan200.computercraft.api.peripheral.PeripheralLookup;
 
@@ -20,20 +20,20 @@ import net.minecraft.registry.Registry;
 
 import net.minecraft.util.Identifier;
 
-import org.featherwhisker.embeddedcomputer.embedded.EmbeddedComputerPeripheral;
-import org.featherwhisker.embeddedcomputer.embedded.block.EmbeddedComputerBlock;
-import org.featherwhisker.embeddedcomputer.embedded.block.EmbeddedComputerBlockEntity;
-import org.featherwhisker.embeddedcomputer.embedded.item.ComputerBlockItem;
+import org.windclan.embeddedcomputer.embedded.EmbeddedComputerPeripheral;
+import org.windclan.embeddedcomputer.embedded.block.EmbeddedComputerBlock;
+import org.windclan.embeddedcomputer.embedded.block.EmbeddedComputerBlockEntity;
+import org.windclan.embeddedcomputer.embedded.item.ComputerBlockItem;
 
-import org.featherwhisker.embeddedcomputer.storage.harddrive.HardDriveBlock;
-import org.featherwhisker.embeddedcomputer.storage.harddrive.HardDriveBlockEntity;
+import org.windclan.embeddedcomputer.storage.harddrive.HardDriveBlock;
+import org.windclan.embeddedcomputer.storage.harddrive.HardDriveBlockEntity;
 
-import org.featherwhisker.embeddedcomputer.platform.registry1;
-import org.featherwhisker.embeddedcomputer.storage.harddrive.HardDriveItem;
-import org.featherwhisker.embeddedcomputer.storage.harddrive.HardDrivePeripheral;
-import org.featherwhisker.embeddedcomputer.storage.items.DebugMediaItem;
-import org.featherwhisker.embeddedcomputer.storage.items.FlashCardItem;
-import org.featherwhisker.embeddedcomputer.storage.items.ZipDiskItem;
+import org.windclan.embeddedcomputer.platform.registry1;
+import org.windclan.embeddedcomputer.storage.harddrive.HardDriveItem;
+import org.windclan.embeddedcomputer.storage.harddrive.HardDrivePeripheral;
+import org.windclan.embeddedcomputer.storage.items.DebugMediaItem;
+import org.windclan.embeddedcomputer.storage.items.FlashCardItem;
+import org.windclan.embeddedcomputer.storage.items.ZipDiskItem;
 
 public class registry {
     public static Block EMBEDDED_COMPUTER = Registry.register(

@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'fabric-loom' version '1.10-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -24,6 +24,17 @@ repositories {
         }
     }
     maven { url "https://maven.shedaniel.me" }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
 }
 
 dependencies {
@@ -41,18 +52,22 @@ dependencies {
 
     //RoughlyEnoughItems
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:$reiVersion"
+
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
 }
 
 processResources {
     inputs.property "version", project.version
     inputs.property "minecraft_version", project.minecraft_version
     inputs.property "loader_version", project.loader_version
+    inputs.property "cctVersion", project.cctVersion
     filteringCharset "UTF-8"
 
     filesMatching("fabric.mod.json") {
         expand "version": project.version,
                 "minecraft_version": project.minecraft_version,
-                "loader_version": project.loader_version
+                "loader_version": project.loader_version,
+                "cctVersion": project.cctVersion
     }
 }
 

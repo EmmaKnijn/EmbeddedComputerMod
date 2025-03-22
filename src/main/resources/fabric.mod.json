@@ -5,7 +5,7 @@
   "name": "Embedded Computer",
   "description": "Embedded computer (+more) for CC",
   "authors": [
-    "Featherwhisker",
+    "average warrior cats fan / WindClan",
     "Herr Katze"
   ],
   "contact": {},
@@ -14,16 +14,16 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "org.featherwhisker.embeddedcomputer.client.mainClient"
+      "org.windclan.embeddedcomputer.client.mainClient"
     ],
     "main": [
-      "org.featherwhisker.embeddedcomputer.main"
+      "org.windclan.embeddedcomputer.main"
     ]
   },
   "mixins": [],
   "depends": {
     "fabricloader": ">=${loader_version}",
-    "computercraft": ">=1.112.0",
+    "computercraft": ">=${cctVersion}",
     "fabric": "*",
     "minecraft": "${minecraft_version}"
   }

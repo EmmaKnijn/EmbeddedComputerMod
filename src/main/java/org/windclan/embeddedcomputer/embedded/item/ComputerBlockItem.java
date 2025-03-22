@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package org.featherwhisker.embeddedcomputer.embedded.item;
+package org.windclan.embeddedcomputer.embedded.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;

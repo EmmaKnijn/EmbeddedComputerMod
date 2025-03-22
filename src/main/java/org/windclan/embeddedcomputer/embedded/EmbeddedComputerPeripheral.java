@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package org.featherwhisker.embeddedcomputer.embedded;
+package org.windclan.embeddedcomputer.embedded;
 
 import dan200.computercraft.api.ComputerCraftAPI;
 import dan200.computercraft.api.filesystem.WritableMount;
@@ -13,12 +13,12 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.shared.computer.blocks.AbstractComputerBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.Direction;
-import org.featherwhisker.embeddedcomputer.storage.harddrive.HardDrivePeripheral;
+import org.windclan.embeddedcomputer.storage.harddrive.HardDrivePeripheral;
 import org.jetbrains.annotations.Nullable;
-import org.featherwhisker.embeddedcomputer.embedded.block.EmbeddedComputerBlockEntity;
+import org.windclan.embeddedcomputer.embedded.block.EmbeddedComputerBlockEntity;
 
 import static java.util.Objects.isNull;
-import static org.featherwhisker.embeddedcomputer.main.log;
+import static org.windclan.embeddedcomputer.main.log;
 
 public class EmbeddedComputerPeripheral implements IPeripheral {
     public final EmbeddedComputerBlockEntity comp;

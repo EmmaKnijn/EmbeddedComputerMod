@@ -1,4 +1,4 @@
-package org.featherwhisker.embeddedcomputer.storage.harddrive;
+package org.windclan.embeddedcomputer.storage.harddrive;
 
 import dan200.computercraft.api.ComputerCraftAPI;
 import dan200.computercraft.api.filesystem.Mount;

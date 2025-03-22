@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package org.featherwhisker.embeddedcomputer.storage.harddrive;
+package org.windclan.embeddedcomputer.storage.harddrive;
 
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IComputerAccess;
@@ -35,7 +35,7 @@ public class HardDrivePeripheral implements IPeripheral {
     }
 
     @LuaFunction(mainThread = true)
-    public boolean mount(IComputerAccess computer, @Nullable String str) {
+    public final boolean mount(IComputerAccess computer, @Nullable String str) {
         if (Objects.equals(str, "rom")) {
             return false;
         }
@@ -43,7 +43,7 @@ public class HardDrivePeripheral implements IPeripheral {
         return hdd.attach(computer,str);
     }
     @LuaFunction(mainThread = true)
-    public boolean unmount(IComputerAccess computer, @Nullable String str) {
+    public final boolean unmount(IComputerAccess computer, @Nullable String str) {
         return hdd.detach(computer,str);
     }
     public static IPeripheral getPeripheral(BlockEntity blockEntity, Direction direction) {

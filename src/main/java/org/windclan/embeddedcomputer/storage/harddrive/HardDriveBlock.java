@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package org.featherwhisker.embeddedcomputer.storage.harddrive;
+package org.windclan.embeddedcomputer.storage.harddrive;
 
 import dan200.computercraft.api.ComputerCraftAPI;
 import dan200.computercraft.api.filesystem.Mount;
@@ -30,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static org.featherwhisker.embeddedcomputer.registry.HARD_DRIVE_ENTITY;
+import static org.windclan.embeddedcomputer.registry.HARD_DRIVE_ENTITY;
 
 public class HardDriveBlock extends BlockWithEntity implements BlockEntityProvider {
     public HardDriveBlock(Settings settings) {

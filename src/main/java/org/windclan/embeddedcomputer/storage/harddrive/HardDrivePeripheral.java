@@ -16,7 +16,7 @@ import java.util.Objects;
 
 public class HardDrivePeripheral implements IPeripheral {
     public HardDriveBlockEntity hdd;
-    private static String mount;
+    private String mount;
     public HardDrivePeripheral(BlockEntity blockEntity) {
         hdd = (HardDriveBlockEntity) blockEntity;
     }
@@ -43,8 +43,22 @@ public class HardDrivePeripheral implements IPeripheral {
         return hdd.attach(computer,str);
     }
     @LuaFunction(mainThread = true)
+    public final boolean mount(IComputerAccess computer) {
+        String str = "drive";
+        if (Objects.equals(str, "rom")) {
+            return false;
+        }
+        mount = str;
+        return hdd.attach(computer,str);
+    }
+
+    @LuaFunction(mainThread = true)
     public final boolean unmount(IComputerAccess computer, @Nullable String str) {
         return hdd.detach(computer,str);
+    }
+    @LuaFunction(mainThread = true)
+    public final boolean unmount(IComputerAccess computer) {
+        return hdd.detach(computer,mount);
     }
     public static IPeripheral getPeripheral(BlockEntity blockEntity, Direction direction) {
         return new HardDrivePeripheral(blockEntity);

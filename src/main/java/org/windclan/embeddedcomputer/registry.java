@@ -24,10 +24,8 @@ import org.windclan.embeddedcomputer.embedded.EmbeddedComputerPeripheral;
 import org.windclan.embeddedcomputer.embedded.block.EmbeddedComputerBlock;
 import org.windclan.embeddedcomputer.embedded.block.EmbeddedComputerBlockEntity;
 import org.windclan.embeddedcomputer.embedded.item.ComputerBlockItem;
-
 import org.windclan.embeddedcomputer.storage.harddrive.HardDriveBlock;
 import org.windclan.embeddedcomputer.storage.harddrive.HardDriveBlockEntity;
-
 import org.windclan.embeddedcomputer.platform.registry1;
 import org.windclan.embeddedcomputer.storage.harddrive.HardDriveItem;
 import org.windclan.embeddedcomputer.storage.harddrive.HardDrivePeripheral;

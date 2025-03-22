@@ -24,8 +24,8 @@ public class HardDriveItem  extends BlockItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         NbtCompound nbt = BlockItem.getBlockEntityNbt(stack);
         if (nbt == null) return;
-        if (!nbt.contains("id")) return;
-        if (nbt.getInt("id") < 0) return;
-        tooltip.add(Text.literal("Drive: "+nbt.getInt("id")).formatted(Formatting.DARK_GRAY));
+        if (!nbt.contains("uuid")) return;
+        if (nbt.getString("uuid").isEmpty()) return;
+        tooltip.add(Text.literal("Drive: "+nbt.getString("uuid")).formatted(Formatting.DARK_GRAY));
     }
 }

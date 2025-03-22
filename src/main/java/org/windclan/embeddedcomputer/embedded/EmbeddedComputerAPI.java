@@ -9,7 +9,16 @@ import dan200.computercraft.api.ComputerCraftAPI;
 import dan200.computercraft.api.filesystem.WritableMount;
 import dan200.computercraft.api.lua.ILuaAPI;
 import dan200.computercraft.api.lua.LuaFunction;
+import dan200.computercraft.core.apis.handles.WriteHandle;
 import dan200.computercraft.shared.computer.core.ServerComputer;
+
+import java.nio.ByteBuffer;
+import java.nio.channels.SeekableByteChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.OpenOption;
+import java.nio.file.StandardOpenOption;
+import java.util.Collections;
+import java.util.Set;
 
 import static java.util.Objects.isNull;
 import static org.windclan.embeddedcomputer.main.log;
@@ -28,7 +37,7 @@ public class EmbeddedComputerAPI implements ILuaAPI {
         ServerComputer comp = brain.getOwner().getServerComputer();
         if (!isNull(comp)) {
             try {
-                WritableMount fs = ComputerCraftAPI.createSaveDirMount(comp.getLevel().getServer(), "computer/" + comp.getID(), 100);
+                WritableMount fs = comp.createRootMount();
                 try {
                     fs.delete("/");
                 }catch(Exception ignored){}

@@ -17,6 +17,8 @@ import net.minecraft.world.World;
 import org.windclan.embeddedcomputer.registry;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.UUID;
+
 import static java.util.Objects.isNull;
 
 public class HardDriveBlockEntity extends BlockEntity  {
@@ -24,18 +26,16 @@ public class HardDriveBlockEntity extends BlockEntity  {
         super(registry.HARD_DRIVE_ENTITY,pos, state);
     }
     private final HardDrivePeripheral periph = new HardDrivePeripheral(this);
-    public static int id = -1;
+    public String uuid = "";
     public String mount;
 
-    public static void tick(World world1, BlockPos pos, BlockState state1, BlockEntity be) {
-
-    }
-
+    public static void tick(World world1, BlockPos pos, BlockState state1, BlockEntity be) {}
     public WritableMount makeMount() {
-        if (id < 0) {
-            id = ComputerCraftAPI.createUniqueNumberedSaveDir(world.getServer(), "hdd");
+        if (uuid.isEmpty()) {
+            uuid = UUID.randomUUID().toString();
+            markDirty();
         }
-        return ComputerCraftAPI.createSaveDirMount(world.getServer(), "hdd/" + id, 25000000); // 25 Megabytes
+        return ComputerCraftAPI.createSaveDirMount(world.getServer(), "hdd/" + uuid, 25000000); // 25 Megabytes
     }
     public boolean attach(IComputerAccess computer, @Nullable String str) {
         if (isNull(str)) {
@@ -57,15 +57,18 @@ public class HardDriveBlockEntity extends BlockEntity  {
     }
     @Override
     public void writeNbt(NbtCompound nbt) {
-        nbt.putInt("id", id);
+        nbt.putString("uuid", uuid);
         super.writeNbt(nbt);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        if (!nbt.contains("id")) id = -1;
-        else id = nbt.getInt("id");
+        uuid = nbt.getString("uuid");
+        if (uuid.isEmpty()) {
+            uuid = UUID.randomUUID().toString();
+            markDirty();
+        }
     }
     public IPeripheral peripheral() {
         return periph;

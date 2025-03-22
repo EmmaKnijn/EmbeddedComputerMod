@@ -13,8 +13,8 @@
               "source": "block_entity",
               "ops": [
                 {
-                  "source": "id",
-                  "target": "BlockEntityTag.id",
+                  "source": "uuid",
+                  "target": "BlockEntityTag.uuid",
                   "op": "replace"
                 }
               ]

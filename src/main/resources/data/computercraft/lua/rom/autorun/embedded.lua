@@ -24,6 +24,11 @@ end
 
 
 if embedded then
+    function embedded.setPassword(str)
+        local a = fs.open("/.LOCKED","w")
+        a.write(str)
+        a.close()
+    end
     if fs.exists("/startup.lua") then
         return
     end

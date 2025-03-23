@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class main implements ModInitializer {
 
-    public static Logger log = LoggerFactory.getLogger("LccAdditions");
+    public static Logger log = LoggerFactory.getLogger("EmbeddedComputer");
     @Override
     public void onInitialize() {
         var a = new registry();

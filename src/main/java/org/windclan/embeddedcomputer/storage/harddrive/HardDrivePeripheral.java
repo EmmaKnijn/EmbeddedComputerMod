@@ -56,10 +56,7 @@ public class HardDrivePeripheral implements IPeripheral {
     public final boolean unmount(IComputerAccess computer, @Nullable String str) {
         return hdd.detach(computer,str);
     }
-    @LuaFunction(mainThread = true)
-    public final boolean unmount(IComputerAccess computer) {
-        return hdd.detach(computer,mount);
-    }
+
     public static IPeripheral getPeripheral(BlockEntity blockEntity, Direction direction) {
         return new HardDrivePeripheral(blockEntity);
     }

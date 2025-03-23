@@ -5,6 +5,8 @@
  */
 package org.windclan.embeddedcomputer.embedded.block;
 
+import com.mojang.serialization.MapCodec;
+import dan200.computercraft.shared.computer.blocks.ComputerBlock;
 import dan200.computercraft.shared.computer.core.ComputerState;
 import dan200.computercraft.shared.util.BlockEntityHelpers;
 import net.minecraft.block.*;
@@ -17,26 +19,32 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.state.property.EnumProperty;
+import net.minecraft.world.WorldView;
 import org.windclan.embeddedcomputer.embedded.item.ComputerBlockItem;
 import org.windclan.embeddedcomputer.registry;
 
 import static java.util.Objects.isNull;
 
 public class EmbeddedComputerBlock<T extends EmbeddedComputerBlockEntity> extends HorizontalFacingBlock  implements BlockEntityProvider {
-    public static EnumProperty powered = EnumProperty.of("state", ComputerState.class);
+    public static EnumProperty powered = ComputerBlock.STATE;
 
     public EmbeddedComputerBlock(Settings settings) {
         super(settings);
         setDefaultState(getDefaultState().with(Properties.HORIZONTAL_FACING, Direction.NORTH).with(powered,ComputerState.OFF));
     }
+
+    @Override
+    protected MapCodec<? extends HorizontalFacingBlock> getCodec() {
+        return createCodec(EmbeddedComputerBlock::new);
+    }
+
     private final BlockEntityTicker<T> ticker = (level, pos, state, computer) -> computer.serverTick();
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
@@ -66,8 +74,8 @@ public class EmbeddedComputerBlock<T extends EmbeddedComputerBlockEntity> extend
 
     //turn on computer
     @Override
-    public ActionResult onUse(BlockState blockState, World world, BlockPos blockPos, PlayerEntity player, Hand hand, BlockHitResult blockHitResult) {
-        var blockEntity1 = world.getBlockEntity(blockPos);
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        var blockEntity1 = world.getBlockEntity(pos);
         if (!world.isClient() && !isNull(blockEntity1)) {
             var blockEntity = (EmbeddedComputerBlockEntity) blockEntity1;
             var computer = blockEntity.getServerComputer();
@@ -96,7 +104,7 @@ public class EmbeddedComputerBlock<T extends EmbeddedComputerBlockEntity> extend
     }
 
     @Override
-    public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
+    public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
         var id = -1;
         var comp1 = world.getBlockEntity(pos);
         if (!isNull(comp1)) {

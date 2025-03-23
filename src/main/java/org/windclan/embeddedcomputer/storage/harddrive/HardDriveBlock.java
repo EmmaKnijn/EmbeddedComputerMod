@@ -5,6 +5,7 @@
  */
 package org.windclan.embeddedcomputer.storage.harddrive;
 
+import com.mojang.serialization.MapCodec;
 import dan200.computercraft.api.ComputerCraftAPI;
 import dan200.computercraft.api.filesystem.Mount;
 import dan200.computercraft.api.media.IMedia;
@@ -12,7 +13,6 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -39,6 +39,11 @@ public class HardDriveBlock extends BlockWithEntity implements BlockEntityProvid
     }
 
     @Override
+    protected MapCodec<? extends BlockWithEntity> getCodec() {
+        return null;
+    }
+
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(Properties.HORIZONTAL_FACING);
     }
@@ -61,6 +66,6 @@ public class HardDriveBlock extends BlockWithEntity implements BlockEntityProvid
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, HARD_DRIVE_ENTITY, (world1, pos, state1, be) -> HardDriveBlockEntity.tick(world1, pos, state1, be));
+        return validateTicker(type, HARD_DRIVE_ENTITY, (world1, pos, state1, be) -> HardDriveBlockEntity.tick(world1, pos, state1, be));
     }
 }

@@ -21,7 +21,7 @@ public class registry1 {
             .icon(() -> new ItemStack(registry.EMBEDDED_COMPUTER))
             .displayName(Text.translatable("itemGroup.embeddedcomputer"))
             .build();
-    public static RegistryKey<ItemGroup> itemGroupKey = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of("embeddedcomputer", "item_group"));
+    public static RegistryKey<ItemGroup> itemGroupKey = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.tryParse("embeddedcomputer", "item_group"));
     public void registerItemGroups() {
         Registry.register(Registries.ITEM_GROUP,itemGroupKey, EMBEDDED_COMPUTER_GROUP);
         ItemGroupEvents.modifyEntriesEvent(itemGroupKey).register(itemGroup -> {

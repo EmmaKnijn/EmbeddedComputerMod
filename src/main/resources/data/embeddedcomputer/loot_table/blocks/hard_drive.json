@@ -1,0 +1,24 @@
+{
+  "pools": [
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "name": "embeddedcomputer:hard_drive",
+          "type": "minecraft:item"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "source": "block_entity",
+      "include": [
+        "embeddedcomputer:uuid"
+      ],
+      "function": "minecraft:copy_components"
+    }
+  ]
+}
+

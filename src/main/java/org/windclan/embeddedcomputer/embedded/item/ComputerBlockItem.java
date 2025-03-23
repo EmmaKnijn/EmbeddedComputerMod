@@ -5,11 +5,13 @@
  */
 package org.windclan.embeddedcomputer.embedded.item;
 
+import dan200.computercraft.shared.ModRegistry;
+import dan200.computercraft.shared.util.NonNegativeId;
 import net.minecraft.block.Block;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -24,14 +26,14 @@ public class ComputerBlockItem extends BlockItem {
     }
     public ItemStack newComputerItem(int id) {
         var stack = new ItemStack(this);
-        if (id > 0) stack.getOrCreateNbt().putInt("ComputerId",id);
+        if (id > 0) stack.set(ModRegistry.DataComponents.COMPUTER_ID.get(),NonNegativeId.of(id));
         return stack;
     }
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        NbtCompound nbt = BlockItem.getBlockEntityNbt(stack);
-        if (nbt == null) return;
-        if (nbt.getInt("ComputerId") < 0) return;
-        tooltip.add(Text.literal("Computer: "+nbt.getInt("ComputerId")).formatted(Formatting.DARK_GRAY));
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
+        NonNegativeId computerId = stack.get(ModRegistry.DataComponents.COMPUTER_ID.get());
+        if (computerId == null) return;
+        if (computerId.id() < 0) return;
+        tooltip.add(Text.literal("Computer: "+computerId.id()).formatted(Formatting.DARK_GRAY));
     }
 }

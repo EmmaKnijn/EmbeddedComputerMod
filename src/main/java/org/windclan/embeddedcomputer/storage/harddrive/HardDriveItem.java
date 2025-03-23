@@ -1,18 +1,14 @@
 package org.windclan.embeddedcomputer.storage.harddrive;
 
-import dan200.computercraft.api.ComputerCraftAPI;
-import dan200.computercraft.api.filesystem.Mount;
-import dan200.computercraft.api.media.IMedia;
 import net.minecraft.block.Block;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
+import org.windclan.embeddedcomputer.registry;
 
 import java.util.List;
 
@@ -21,11 +17,10 @@ public class HardDriveItem  extends BlockItem {
         super(block, settings);
     }
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        NbtCompound nbt = BlockItem.getBlockEntityNbt(stack);
-        if (nbt == null) return;
-        if (!nbt.contains("uuid")) return;
-        if (nbt.getString("uuid").isEmpty()) return;
-        tooltip.add(Text.literal("Drive: "+nbt.getString("uuid")).formatted(Formatting.DARK_GRAY));
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType options) {
+        String uuid = stack.get(registry.uuid);
+        if (uuid == null) return;
+        if (uuid.isEmpty()) return;
+        tooltip.add(Text.literal("Drive: "+uuid).formatted(Formatting.DARK_GRAY));
     }
 }

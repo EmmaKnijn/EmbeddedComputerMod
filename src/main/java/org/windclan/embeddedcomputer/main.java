@@ -20,7 +20,7 @@ public class main implements ModInitializer {
         a.registerPeripherals();
         a.registerItemGroups();
         ComputerCraftAPI.registerAPIFactory(computer -> {
-            var embedded = computer.getComponent(ComputerComponents.EMBEDDED);
+            var embedded = computer.getComponent(registry.EMBEDDED_COMPONENT);
             return embedded == null ? null : new EmbeddedComputerAPI(embedded);
         });
     }

@@ -11,7 +11,9 @@ import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.ComponentMap;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.windclan.embeddedcomputer.registry;
@@ -56,19 +58,40 @@ public class HardDriveBlockEntity extends BlockEntity  {
         }
     }
     @Override
-    public void writeNbt(NbtCompound nbt) {
+    public void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         nbt.putString("uuid", uuid);
-        super.writeNbt(nbt);
+        super.writeNbt(nbt,registryLookup);
     }
 
     @Override
-    public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
+    public void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.readNbt(nbt,registryLookup);
         uuid = nbt.getString("uuid");
         if (uuid.isEmpty()) {
             uuid = UUID.randomUUID().toString();
             markDirty();
         }
+    }
+
+    @Override
+    protected void readComponents(ComponentsAccess components) {
+        super.readComponents(components);
+        uuid = components.getOrDefault(registry.uuid,"");
+        if (uuid.isEmpty()) {
+            uuid = UUID.randomUUID().toString();
+            markDirty();
+        }
+    }
+
+    @Override
+    protected void addComponents(ComponentMap.Builder componentMapBuilder) {
+        super.addComponents(componentMapBuilder);
+        componentMapBuilder.add(registry.uuid,this.uuid);
+    }
+
+    @Override
+    public void removeFromCopiedStackNbt(NbtCompound nbt) {
+        nbt.remove("uuid");
     }
     public IPeripheral peripheral() {
         return periph;
